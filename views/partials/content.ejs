@@ -91,6 +91,66 @@
 <% } %>
 <!--AUTHOR VIEW END HERE-->
 
+<!--USER VIEW STARTS HERE -->
+<% if (title == 'Create User') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              User Title:<br>
+              <input type="text" name="username" value="User Title">
+              <br>
+    
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'Delete User') { %>
+     
+<% } else if (title == 'Update User') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="/blog/post/<%= post.id %>/update" method="post">
+              Username:<br>
+              <input type="text" name="post_title" value="<%= post.post_title %>">
+              <br>
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'User Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Single user</h1>
+             <p>I am a user for this ID = <%= user.id %></p>
+             <!--<p>Post Title: <%= post.post_title %></p>-->
+             <!--<p>Post Body:  <%= post.post_body %></p>-->
+             <a href="/blog/user/<%= user.id %>/update">Edit  User</a> | <a href="/blog/user/<%= post.id %>/delete">Delete User</a>
+        </div>
+    </div>
+<% } else if (title == 'User List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+        <ol>
+        <% posts.forEach(function(post) { %>
+                <li>
+                    <h4><a href="/blog/post/<%= post.id %>"><%= post.post_title %></a></h4>
+                    <p>The main body of the post <%= post.post_body %></p>
+                     <a href="/blog/post/<%= post.id %>/update">Edit  Post</a> | <a href="/blog/post/<%= post.id %>/delete">Delete Post</a>
+                </li>
+            <br/>
+        <% }); %>
+        </ol>
+    </div>
+    </div>
+<% } else { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <h1><%= title %></h1>
+            <p>The main content of the page goes here</p>
+        </div>
+    </div>
+<% } %>
+<!--POST VIEW END HERE-->
+
 <!--COMMENT VIEW STARTS HERE-->
 <!--complete logic for category view-->
 
