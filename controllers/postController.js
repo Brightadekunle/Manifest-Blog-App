@@ -16,15 +16,21 @@ exports.post_create_post = function(req, res, next) {
       models.Post.create({
             post_title: req.body.post_title,
             post_body: req.body.post_body
-        }).then(function() {
+        }).then(function(post) {
+            console.log(post)
             console.log("Post created successfully");
            // check if there was an error during post creation
             res.redirect('/blog/posts');
-      });
+      })
+        .catch(err => console.log(`Error - ${err}`))
+      ;
 };
 
 // Display post delete form on GET.
 exports.post_delete_get = function(req, res, next) {
+    // let postId = req.params.post_id.split(':')[1]
+    console.log(req.params)
+    
        models.Post.destroy({
             // find the post_id to delete from database
             where: {
@@ -40,6 +46,7 @@ exports.post_delete_get = function(req, res, next) {
 
 // Handle post delete on POST.
 exports.post_delete_post = function(req, res, next) {
+        console.log(req.params)
           models.Post.destroy({
             // find the post_id to delete from database
             where: {
@@ -58,13 +65,26 @@ exports.post_delete_post = function(req, res, next) {
 exports.post_update_get = function(req, res, next) {
         // Find the post you want to update
         console.log("ID is " + req.params.post_id);
-        models.Post.findByPk(
-                req.params.post_id
-        ).then(function(post) {
-               // renders a post form
+        models.Post.findOne({
+            where: {
+                id: req.params.post_id
+            }
+        })
+            .then((post) => {
+                // renders a post form
                res.render('forms/post_form', { title: 'Update Post', post: post, layout: 'layouts/detail'});
                console.log("Post update get successful");
-          });
+            })
+        // models.Post.findByPk({
+        //     where: {
+        //         id: req.params.post_id
+        //     }
+        // }
+        // ).then(function(post) {
+        //       // renders a post form
+        //       res.render('forms/post_form', { title: 'Update Post', post: post, layout: 'layouts/detail'});
+        //       console.log("Post update get successful");
+        //   });
         
 };
 
@@ -95,8 +115,13 @@ exports.post_update_post = function(req, res, next) {
 // Display detail page for a specific post.
 exports.post_detail = function(req, res, next) {
         // find a post by the primary key Pk
-        models.Post.findByPk(
-                req.params.post_id
+        
+        console.log(req.params)
+        models.Post.findOne({
+            where: {
+                id: req.params.post_id
+            }
+        }
         ).then(function(post) {
         // renders an inividual post details page
         res.render('pages/post_detail', { title: 'Post Details', post: post, layout: 'layouts/detail'} );
@@ -131,6 +156,7 @@ exports.index = function(req, res) {
         // find the count of comments in database
  
         // find the count of categories in database
+        console.log(postCount.count)
  
         res.render('pages/index', {title: 'Homepage', postCount: postCount, layout: 'layouts/main'});
         
