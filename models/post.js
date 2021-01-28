@@ -1,4 +1,6 @@
 'use strict';
+const sequelize = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   var Post = sequelize.define('Post', {
     post_title: DataTypes.STRING,

@@ -7,6 +7,7 @@ var author_controller = require('../controllers/authorController');
 var post_controller = require('../controllers/postController'); 
 var category_controller = require('../controllers/categoryController');
 var comment_controller = require('../controllers/commentController');
+const userController = require('../controllers/userController')
 
 
 /// POST ROUTES ///
@@ -117,6 +118,25 @@ router.get('/comments', comment_controller.comment_list);
 
 // GET blog home page.
 router.get('/', post_controller.index); 
+
+
+router.get('/user/create', userController.user_create_get)
+
+router.post('/user/create', userController.user_create_post)
+
+
+router.get('/user/:user_id/destroy', userController.user_delete_get)
+
+router.post('/user/:user_id/destroy', userController.user_delete_post);
+
+router.get('/user/:user_id/update', userController.user_update_get)
+
+router.post('/user/:user_id/update', userController.user_update_post);
+
+router.get('/user', userController.user_list)
+
+router.get('/user/:user_id', userController.user_detail)
+
 
 // export all the router created
 module.exports = router;
