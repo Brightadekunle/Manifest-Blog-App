@@ -125,9 +125,9 @@ router.get('/user/create', userController.user_create_get)
 router.post('/user/create', userController.user_create_post)
 
 
-router.get('/user/:user_id/destroy', userController.user_delete_get)
+router.get('/user/:user_id/delete', userController.user_delete_get)
 
-router.post('/user/:user_id/destroy', userController.user_delete_post);
+router.post('/user/:user_id/delete', userController.user_delete_post);
 
 router.get('/user/:user_id/update', userController.user_update_get)
 

@@ -29,10 +29,15 @@ exports.author_create_post = function(req, res, next) {
 exports.author_delete_get = function(req, res, next) {
         // GET logic to delete an author here
         
-        models.Author.findByPk()
+        models.Author.destroy({
+                where: {
+                        id: req.params.author_id
+                }
+        })
                 .then(() => {
-                        // renders author delete page
-                        res.render('pages/author_delete', { title: 'Delete Author',  layout: 'layouts/detail'} );
+                        // If an author gets deleted successfully, we just redirect to authors list
+                        // no need to render a page
+                        res.redirect('/blog/authors');
                 })
                 .catch(err => console.log(`Error - ${err}`))
 };

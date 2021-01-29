@@ -28,8 +28,20 @@ exports.user_create_post = function(req, res, next) {
 exports.user_delete_get = function(req, res, next) {
         // GET logic to delete an author here
         
+        console.log(req.params)
+        models.User.destroy({
+                where: {
+                        id: req.params.user_id
+                }
+        })
+                .then(() => {
+                        console.log("User deleted successfully")
+                        res.redirect('/blog/user')    
+                })
+                .catch(err => console.log(err))
+        
         // renders author delete page
-        res.render('pages/user_delete', { title: 'Delete User',  layout: 'layouts/detail'} );
+        // res.render('pages/user_delete', { title: 'Delete User',  layout: 'layouts/detail'} );
 };
 
 // Handle author delete on POST.

@@ -30,14 +30,16 @@ exports.category_create_post = function(req, res, next) {
 exports.category_delete_get = function(req, res, next) {
         // GET logic to delete a category here
         
-        models.Category.findOne({
+       models.Category.destroy({
                 where: {
                         id: req.params.category_id
                 }
         })
                 .then(() => {
-                        // renders delete page
-                        res.render('pages/category_delete', { title: 'Delete Category',  layout: 'layouts/detail'} );
+                        // If a category gets deleted successfully, we just redirect to categories list
+                        // no need to render a page
+                        console.log("Category deleted successfully")
+                        res.redirect('/blog/categories');
                 })
                 .catch(err => console.log(`Error - ${err}`))
 };
@@ -106,6 +108,7 @@ exports.category_list = function(req, res, next) {
         models.Category.findAll()
                 .then((categories) => {
                         // renders a category list page
+                        console.log(categories)
                         res.render('pages/category_list', { title: 'Category List',  layout: 'layouts/list', categories: categories} );
                 })
                 .catch(err => console.log(`Error - ${err}`))

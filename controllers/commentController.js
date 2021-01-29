@@ -95,7 +95,7 @@ exports.comment_update_post = function(req, res, next) {
                          // If a comment gets updated successfully, we just redirect to comments list
                         // no need to render a page
                         console.log('Comment updated successfully')
-                        res.redirect("/comments");                
+                        res.redirect("/blog/comments");                
                  })
                 .catch(err => console.log(`Error - ${err}`))
        
