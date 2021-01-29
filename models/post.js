@@ -6,6 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     post_title: DataTypes.STRING,
     post_body: DataTypes.STRING,
   });
+  
+  Post.associate = (models) => {
+    models.Post.hasMany(models.Category)
+    models.Post.hasMany(models.Comment)
+    models.Post.belongsTo(models.Author)
+  }
   return Post;
 };
 

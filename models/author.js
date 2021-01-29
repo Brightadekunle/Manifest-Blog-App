@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
     }},
   });
+  
+  Author.associate = (models) => {
+    models.Author.hasMany(models.Post)
+  }
 
   return Author;
 };

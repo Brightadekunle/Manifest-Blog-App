@@ -1,4 +1,3 @@
-var Post = require('../models/post');
 var models = require('../models');
 
 // Display post create form on GET.
@@ -152,13 +151,22 @@ exports.index = function(req, res) {
           
        
         // find the count of authors in database
+        models.Author.findAndCountAll()
+            .then(authorCount => {
+                
+                models.Comment.findAndCountAll()
+                    .then(commentCount => {
+                        models.Category.findAndCountAll()
+                            .then(categoryCount => {
+                                      res.render('pages/index', {title: 'Homepage', postCount: postCount, commentCount: commentCount, categoryCount: categoryCount, authorCount: authorCount, layout: 'layouts/main'});  
+                            })
+                    })
+            })
  
         // find the count of comments in database
  
         // find the count of categories in database
-        console.log(postCount.count)
- 
-        res.render('pages/index', {title: 'Homepage', postCount: postCount, layout: 'layouts/main'});
+        // console.log(postCount.count)
         
         // res.render('pages/index_list_sample', { title: 'Post Details', layout: 'layouts/list'});
         // res.render('pages/index_detail_sample', { page: 'Home' , title: 'Post Details', layout: 'layouts/detail'});

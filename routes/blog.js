@@ -36,6 +36,8 @@ router.get('/post/:post_id', post_controller.post_detail);
 // GET request for list of all Post.
 router.get('/posts', post_controller.post_list);
 
+router.get('/', post_controller.index); 
+
 /// AUTHOR ROUTES ///
 
 // GET request for creating Author. NOTE This must come before route for id (i.e. display author).
@@ -61,6 +63,8 @@ router.get('/author/:author_id', author_controller.author_detail);
 
 // GET request for list of all Authors.
 router.get('/authors', author_controller.author_list);
+
+
 
 
 /// Category ROUTES ///
@@ -90,6 +94,7 @@ router.get('/category/:category_id', category_controller.category_detail);
 router.get('/categories', category_controller.category_list);
 
 
+
 /// COMMENT ROUTES ///
 
 // GET request for creating Comment. NOTE This must come before route for id (i.e. display comment).
@@ -116,8 +121,9 @@ router.get('/comment/:comment_id', comment_controller.comment_detail);
 // GET request for list of all Comments.
 router.get('/comments', comment_controller.comment_list);
 
+
 // GET blog home page.
-router.get('/', post_controller.index); 
+
 
 
 router.get('/user/create', userController.user_create_get)
@@ -136,6 +142,7 @@ router.post('/user/:user_id/update', userController.user_update_post);
 router.get('/user', userController.user_list)
 
 router.get('/user/:user_id', userController.user_detail)
+
 
 
 // export all the router created
