@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Post.associate = (models) => {
-    models.Post.hasMany(models.Category)
+    models.Post.belongsTo(models.Category)
     models.Post.hasMany(models.Comment)
     models.Post.belongsTo(models.Author)
   }

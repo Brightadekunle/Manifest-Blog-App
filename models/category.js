@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   
   Category.associate = (models) => {
-    models.Category.belongsTo(models.Post)
+    models.Category.hasMany(models.Post)
   }
 
   return Category;
