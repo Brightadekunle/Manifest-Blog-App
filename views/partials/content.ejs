@@ -14,12 +14,12 @@
         <div class="jumbotron">
             <form action="/blog/post/create" method="post">
               Post Title:<br>
-              <input type="text" name="post_title" value="">
+              <input type="text" name="post_title" value="" class="form-control">
               <br>
               Post Body:<br>
-              <input type="text" name="post_body" value="">
+              <input type="text" name="post_body" value="" class="form-control">
               <br><br>
-              <input type="submit" value="Submit">
+              <input class="btn btn-primary" type="submit" value="Submit">
             </form>
         </div>
     </div>
@@ -30,12 +30,12 @@
         <div class="jumbotron">
             <form action="/blog/post/<%= post.id %>/update" method="post">
               Post Title:<br>
-              <input type="text" name="post_title" value="<%= post.post_title %>">
+              <input type="text" name="post_title" value="<%= post.post_title %>" class="form-control">
               <br>
               Post Body:<br>
-              <input type="text" name="post_body" value="<%= post.post_body %>">
+              <input type="text" name="post_body" value="<%= post.post_body %>" class="form-control">
               <br><br>
-              <input type="submit" value="Update">
+              <input type="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -46,7 +46,7 @@
              <p>I am a post for this ID = <%= post.id %></p>
              <p>Post Title: <%= post.post_title %></p>
              <p>Post Body:  <%= post.post_body %></p>
-             <a href="/blog/post/<%= post.id %>/update">Edit  Post</a> | <a href="/blog/post/<%= post.id %>/delete">Delete Post</a>
+             <a class="btn btn-primary" href="/blog/post/<%= post.id %>/update">Edit  Post</a> | <a class="btn btn-danger" href="/blog/post/<%= post.id %>/delete">Delete Post</a>
         </div>
     </div>
 <% } else if (title == 'Post List') { %>
@@ -57,7 +57,7 @@
                 <li>
                     <h4><a href="/blog/post/<%= post.id %>"><%= post.post_title %></a></h4>
                     <p>The main body of the post <%= post.post_body %></p>
-                     <a href="/blog/post/<%= post.id %>/update">Edit  Post</a> | <a href="/blog/post/<%= post.id %>/delete">Delete Post</a>
+                     <a class="btn btn-primary" href="/blog/post/<%= post.id %>/update">Edit  Post</a> | <a class="btn btn-danger" href="/blog/post/<%= post.id %>/delete">Delete Post</a>
                 </li>
             <br/>
         <% }); %>
@@ -67,8 +67,8 @@
 <% } else { %>
     <div class="col-sm-8">    
         <div class="jumbotron">
-            <h1><%= title %></h1>
-            <p>The main content of the page goes here</p>
+            <h1 class"title"><%= title %></h1>
+            <!--<p>The main content of the page goes here</p>-->
         </div>
     </div>
 <% } %>
@@ -81,18 +81,18 @@
         <div class="jumbotron">
             <form action="/blog/author/create" method="post">
               First Name:<br>
-              <input type="text" name="first_name" value="">
+              <input type="text" name="first_name" value="" class="form-control">
               <br>
               Last Name:<br>
-              <input type="text" name="last_name" value="">
+              <input type="text" name="last_name" value="" class="form-control">
               <br>
               Username:<br>
-              <input type="text" name="username" value="">
+              <input type="text" name="username" value="" class="form-control">
               <br>
               Email:<br>
-              <input type="text" name="email" value="">
+              <input type="text" name="email" value="" class="form-control">
               <br><br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -103,18 +103,18 @@
         <div class="jumbotron">
             <form action="/blog/author/<%= author.id %>/update" method="post">
               First Name:<br>
-              <input type="text" name="first_name" value="<%= author.first_name %>">
+              <input type="text" name="first_name" value="<%= author.first_name %>" class="form-control">
               <br>
               Last Name:<br>
-              <input type="text" name="last_name" value="<%= author.last_name %>">
+              <input type="text" name="last_name" value="<%= author.last_name %>" class="form-control">
               <br>
               Username:<br>
-              <input type="text" name="username" value="<%= author.username %>">
+              <input type="text" name="username" value="<%= author.username %>" class="form-control">
               <br>
               Email:<br>
-              <input type="text" name="email" value="<%= author.email %>">
+              <input type="text" name="email" value="<%= author.email %>" class="form-control">
               <br><br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -126,7 +126,7 @@
              <h1>Details of a Single Author</h1>
              <p>I am a author for this ID = <%= author.id %></p>
              <p>Author Name:  <%= author.username %></p>
-             <a href="/blog/author/<%= author.id %>/update">Edit  Author</a> | <a href="/blog/author/<%= author.id %>/delete">Delete Author</a>
+             <a class="btn btn-primary" href="/blog/author/<%= author.id %>/update">Edit  Author</a> | <a class="btn btn-danger" href="/blog/author/<%= author.id %>/delete">Delete Author</a>
         </div>
         </div>
     </div>
@@ -139,7 +139,7 @@
                 <li>
                     <h4><a href="/blog/author/<%= author.id %>"><%= author.username %></a></h4>
                     <p>The main body of the author <%= author.username %></p>
-                     <a href="/blog/author/<%= author.id %>/update">Edit Author</a> | <a href="/blog/author/<%= author.id %>/delete">Delete Author</a>
+                     <a class="btn btn-primary" href="/blog/author/<%= author.id %>/update">Edit Author</a> | <a class="btn btn-danger" href="/blog/author/<%= author.id %>/delete">Delete Author</a>
                 </li>
             <br/>
         <% }); %>
@@ -158,9 +158,9 @@
         <div class="jumbotron">
             <form action="" method="post">
               Username:<br>
-              <input type="text" name="username" value="Username">
+              <input type="text" name="username" value="Username" class="form-control">
               <br>
-            <input type="submit" value="Create">
+            <input type="submit" value="Create" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -171,9 +171,9 @@
         <div class="jumbotron">
             <form action="/blog/user/<%= user.id %>/update" method="post">
               Username:<br>
-              <input type="text" name="username" value="<%= user.username %>">
+              <input type="text" name="username" value="<%= user.username %>" class="form-control">
               <br>
-              <input type="submit" value="Update">
+              <input type="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -184,7 +184,7 @@
                  <h1>Details of a Single User</h1>
                  <p>I am a user for this ID = <%= author.id %></p>
                  <p>User Name:  <%= user.username %></p>
-                 <a href="/blog/user/<%= user.id %>/update">Edit User</a> | <a href="/blog/user/<%= user.id %>/delete">Delete User</a>
+                 <a class="btn btn-primary" href="/blog/user/<%= user.id %>/update">Edit User</a> | <a class="btn btn-danger" href="/blog/user/<%= user.id %>/delete">Delete User</a>
             </div>
         </div>
     </div>
@@ -196,7 +196,7 @@
                 <li>
                     <h4><a href="/blog/user/<%= user.id %>"><%= user.username %></a></h4>
                     <p>The main body of the user <%= user.username %></p>
-                     <a href="/blog/user/<%= user.id %>/update">Edit User</a> | <a href="/blog/user/<%= user.id %>/delete">Delete User</a>
+                     <a class="btn btn-primary" href="/blog/user/<%= user.id %>/update">Edit User</a> | <a class="btn btn-danger" href="/blog/user/<%= user.id %>/delete">Delete User</a>
                 </li>
             <br/>
         <% }); %>
@@ -215,9 +215,9 @@
         <div class="jumbotron">
             <form action="/blog/comment/create" method="post">
               Comment Title:<br>
-              <input type="text" name="title" value="">
+              <input type="text" name="title" value="" class="form-control">
               <br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -228,11 +228,11 @@
         <div class="jumbotron">
             <form action="/blog/comment/<%= comment.id %>/update" method="post">
               Comment Title:<br>
-              <input type="text" name="title" value="<%= comment.title %>">
+              <input type="text" name="title" value="<%= comment.title %>" class="form-control">
               <br>
               
               <br><br>
-              <input type="submit" value="Update">
+              <input type="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -245,7 +245,7 @@
                 <li>
                     <h4><a href="/blog/comment/<%= comment.id %>"><%= comment.title %></a></h4>
                     <p>The main body of the Comment <%= comment.title %></p>
-                     <a href="/blog/comment/<%= comment.id %>/update">Edit Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+                     <a class="btn btn-primary" href="/blog/comment/<%= comment.id %>/update">Edit Comment</a> | <a class="btn btn-danger" href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
                 </li>
             <br/>
         <% }); %>
@@ -260,7 +260,7 @@
              <p>I am a comment for this ID = <%= comment.id %></p>
              <p>comment Title: <%= comment.title %></p>
              
-             <a href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
+             <a class="btn btn-primary" href="/blog/comment/<%= comment.id %>/update">Edit  Comment</a> | <a class="btn btn-danger" href="/blog/comment/<%= comment.id %>/delete">Delete Comment</a>
         </div>
     </div>
   
@@ -277,10 +277,10 @@
         <div class="jumbotron">
             <form action="" method="post">
               Name :<br>
-              <input type="text" name="name" value="">
+              <input type="text" name="name" value="" class="form-control">
               <br>
               <br><br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -291,10 +291,10 @@
         <div class="jumbotron">
             <form action="/blog/category/<%= category.id %>/update" method="post">
               category name:<br>
-              <input type="text" name="name" value="<%= category.name %>">
+              <input type="text" name="name" value="<%= category.name %>" class="form-control">
               <br>
               <br><br>
-              <input type="submit" value="Update">
+              <input type="submit" value="Update" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -307,7 +307,7 @@
                 <li>
                     <h4><a href="/blog/category/<%= category.id %>"><%= category.title %></a></h4>
                     <p>The main body of the Category <%= category.name %></p>
-                     <a href="/blog/category/<%= category.id %>/update">Edit Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+                     <a class="btn btn-primary" href="/blog/category/<%= category.id %>/update">Edit Category</a> | <a class="btn btn-danger" href="/blog/category/<%= category.id %>/delete">Delete Category</a>
                 </li>
             <br/>
         <% }); %>
@@ -322,7 +322,7 @@
              <h1>Details of a Single Category</h1>
              <p>I am a category for this ID = <%= category.id %></p>
              <p>Category Name:  <%= category.name %></p>
-             <a href="/blog/category/<%= category.id %>/update">Edit Category</a> | <a href="/blog/category/<%= category.id %>/delete">Delete Category</a>
+             <a class="btn btn-primary" href="/blog/category/<%= category.id %>/update">Edit Category</a> | <a class="btn btn-danger" href="/blog/category/<%= category.id %>/delete">Delete Category</a>
         </div>
     </div>
   
